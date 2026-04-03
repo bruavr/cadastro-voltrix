@@ -1162,24 +1162,40 @@
     });
 
     const payload = {
-      razao_social:  document.getElementById('razao_social').value,
-      nome_fantasia: document.getElementById('nome_fantasia').value,
-      cnpj:          document.getElementById('cnpj').value,
-      segmento:      document.getElementById('segmento').value,
-      porte:         document.getElementById('porte').value,
-      plano:         document.getElementById('plano').value,
-      nome_contato:  document.getElementById('nome_contato').value,
-      cargo:         document.getElementById('cargo').value,
-      email:         document.getElementById('email').value,
-      whatsapp:      document.getElementById('whatsapp').value,
-      canal:         canal,
-      recv_email:    document.getElementById('recv_email').checked ? 'Sim' : 'Não',
-      recv_whats:    document.getElementById('recv_whats').checked ? 'Sim' : 'Não',
-      membros:       membros.length > 0
-                       ? membros.map(m => `${m.nome} (${m.cargo || '—'})`).join(' | ')
-                       : 'Nenhum',
+      // ── Coluna C: Razão Social
+      razao_social:    document.getElementById('razao_social').value.trim(),
+      // ── Coluna D: Nome Fantasia
+      nome_fantasia:   document.getElementById('nome_fantasia').value.trim(),
+      // ── Coluna E: CNPJ
+      cnpj:            document.getElementById('cnpj').value.trim(),
+      // ── Coluna F: Segmento
+      segmento:        document.getElementById('segmento').value,
+      // ── Coluna G: Porte
+      porte:           document.getElementById('porte').value,
+      // ── Coluna H: Plano / Produto
+      plano:           document.getElementById('plano').value,
+      // ── Coluna I: Nome do Contato
+      nome_contato:    document.getElementById('nome_contato').value.trim(),
+      // ── Coluna J: Cargo
+      cargo:           document.getElementById('cargo').value.trim(),
+      // ── Coluna K: E-mail
+      email:           document.getElementById('email').value.trim(),
+      // ── Coluna L: WhatsApp
+      whatsapp:        document.getElementById('whatsapp').value.trim(),
+      // ── Coluna M: Canal Preferido
+      canal:           canal,
+      // ── Coluna N: Recebe E-mail?
+      recv_email:      document.getElementById('recv_email').checked ? 'Sim' : 'Não',
+      // ── Coluna O: Recebe WhatsApp?
+      recv_whats:      document.getElementById('recv_whats').checked ? 'Sim' : 'Não',
+      // ── Coluna P: Membros (resumo texto)
+      membros:         membros.length > 0
+                         ? membros.map(m => `${m.nome} (${m.cargo || '—'})`).join(' | ')
+                         : 'Nenhum',
+      // ── Enviado separado → aba Equipes (não vai como coluna na planilha principal)
       membros_detalhe: JSON.stringify(membros),
-      obs:           document.getElementById('obs').value,
+      // ── Coluna Q: Observações
+      obs:             document.getElementById('obs').value.trim(),
     };
 
     try {
